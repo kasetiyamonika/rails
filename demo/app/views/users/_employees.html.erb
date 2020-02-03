@@ -1,0 +1,5 @@
+<%= form_tag('/employees/xyz', method: "post") do %>
+  <%= label_tag(:name, "first name:") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("create") %>
+<% end %>

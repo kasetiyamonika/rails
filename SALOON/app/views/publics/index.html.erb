@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Publics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book</th>
+      <th>Author</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publics.each do |public| %>
+      <tr>
+        <td><%= public.book_id %></td>
+        <td><%= public.author_id %></td>
+        <td><%= public.name %></td>
+        <td><%= link_to 'Show', public %></td>
+        <td><%= link_to 'Edit', edit_public_path(public) %></td>
+        <td><%= link_to 'Destroy', public, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Public', new_public_path %>

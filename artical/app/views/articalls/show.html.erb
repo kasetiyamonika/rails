@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @articall.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @articall.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_articall_path(@articall) %> |
+<%= link_to 'Back', articalls_path %>

@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+<div class="row ">
+  <div class="col-xl-12">
+    <h1>Users</h1>
+    <button class="btn btn-success float-xl-right"><%= link_to 'New User', new_user_path %></button>
+
+    <table class="text-center text-dark table table-hover">
+        <thead>
+          <tr>
+            <td colspan="9">
+              <%= form_tag users_path,method: :get do %>
+              <div class="row">
+                <div class="col">
+                  <%= text_field_tag :name ,params[:name], placeholder: "Search Name" ,class: "form-control" %>
+                </div>
+                <div class="col">
+                  <%= text_field_tag :marks ,params[:marks], placeholder: "Search marks" ,class: "form-control" %>
+                </div>
+                <div class="col">
+                <%= text_field_tag :standard ,params[:standard], placeholder: "Search standard" ,class: "form-control" %>
+              </div>
+              <div class="col">
+                <%= text_field_tag :division ,params[:division], placeholder: "Search division" ,class: "form-control" %>
+              </div>
+              <div class="col">
+                <%= submit_tag "Search", class: "btn btn-primary btn-block" %>
+              <div>
+            </div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Marks</th>
+            <th>Standard</th>
+            <th>Division</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
+
+        <tbody class="text-lg-center">
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.marks %></td>
+              <td><%= user.standard %></td>
+              <td><%= user.division %></td>
+              <td><%= link_to 'Show', user %></td>
+              <td><%= link_to 'custom', custom_user_path(user) %></td>
+              <td><%= link_to 'active', active_users_path %></td>
+              <td><%= link_to 'Edit', edit_user_path(user) %></td>
+              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td colspan="9">
+              <%= paginate @users %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<section class="ftco-section bg-light">
+	<div class="container">
+    <div class="heading-section mb-5">
+      <h2 class="mb-4">New Appointment</h2>
+    </div>
+    <div class="ftco-search">
+      <%= form_with(model: appointment, local: true) do |form| %>
+        <% if appointment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+            <ul>
+              <% appointment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="container">
+           <!-- <div class="field">
+            <%= form.label :user_id %>
+            <%= form.text_field :user_id %>
+          </div> -->
+
+          <div class="field">
+            <%= form.label :service_id %>
+            <%= form.text_field :service_id,class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= form.label :payment_id %>
+            <%= form.text_field :payment_id, class:"form-control" %>
+          </div>
+          <br>
+          <div class="field">
+            <%= form.label :payment_mode %><br>
+            <%= form.select :payment_mode, options_for_select([['Cash'],['Cheque'], ['Cash Online']]), class: "form-control" %>
+          </div>
+          <br>
+          <!-- <div class="field">
+            <%= form.label :price %>
+            <%= form.text_field :price %>
+          </div>
+
+          <div class="field">
+            <%= form.label :start_time %>
+            <%= form.datetime_select :start_time %>
+          </div>
+
+          <div class="field">
+            <%= form.label :end_time %>
+            <%= form.datetime_select :end_time %>
+          </div> -->
+
+          <!-- <div class="field">
+            <%= form.label :status %>
+            <%= form.text_field :status %>
+          </div> -->
+
+          <div class="field">
+            <%= form.label :remark %>
+            <%= form.text_area :remark, class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-success btn-lg"><%= link_to 'Get Appointment'%></button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

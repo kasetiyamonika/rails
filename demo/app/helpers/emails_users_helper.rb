@@ -1,0 +1,2 @@
+module EmailsUsersHelper
+end

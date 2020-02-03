@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Emails</h1>
+<button class="btn btn-success float-xl-right"><%= link_to 'New Email', new_email_path %></button>
+
+  <table class="text-center text-dark table table-hover">
+    <thead>
+      <tr>
+        <td colspan="5">
+          <%= form_tag emails_path, method: :get do %>
+          <div class="row">
+            <div class="col">
+              <%= text_field_tag :email ,params[:email] ,placeholder: "Search Email" ,class: "form-control" %>
+            </div>
+            <div class="col">
+              <%= submit_tag "Search", class:"btn btn-primary btn-block" %>
+            </div>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody class="text-lg-center">
+      <% @emails.each do |email| %>
+        <tr>
+          <td><%= email.email %></td>
+          <td><%= link_to 'Show', email %></td>
+          <td><%= link_to 'Edit', edit_email_path(email) %></td>
+          <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to  'Emails Users', emails_users_email_path(email) %><td>
+
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="5">
+          <%= paginate @emails %>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>

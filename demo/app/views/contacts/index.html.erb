@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+<button class="btn btn-success float-xl-right"><%= link_to 'New Contact', new_contact_path %></button>
+
+
+  <table class="text-center text-dark table table-hover">
+    <thead>
+      <tr>
+        <td colspan="6">
+          <%= form_tag contacts_path, method: :get do %>
+          <div class="row">
+            <div class="col">
+              <%= text_field_tag :mobile ,params[:mobile], placeholder: "Search Mobile Number" ,class: "form-control" %>
+            </div>
+            <div class="col">
+              <%= submit_tag "Search", class: "btn btn-primary btn-block" %>
+            </div>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Mobile</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+
+    <tbody class="text-lg-center">
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= contact.mobile %></td>
+          <td><%= link_to 'Show', contact %></td>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to  'Contact Users', contacts_users_contact_path(contact) %><td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="6">
+          <%= paginate @contacts %>
+        </td>
+      </tr>
+    </tbody>
+</table>
